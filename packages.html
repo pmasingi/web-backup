@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Packages | Math & Matter</title>
+    <meta name="description" content="Comprehensive tutoring packages for High School, Matric Rewrite, and University students. Flexible pricing with pay-as-you-go and discounted packages.">
+    <meta name="keywords" content="tutoring packages, math tutoring prices, science tutoring costs, high school tutoring, matric rewrite, university tutoring, Bassonia, Johannesburg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Custom Styles for Pricing Tables -->
+    <style>
+        .pricing-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .pricing-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-table-header {
+            background: linear-gradient(135deg, var(--navy-blue), var(--soft-teal));
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .pricing-table-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-table-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .pricing-table-content {
+            padding: 0;
+        }
+        
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        
+        .pricing-table th {
+            background-color: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--navy-blue);
+            border-bottom: 2px solid #e9ecef;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .pricing-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .payg-price {
+            color: #dc3545;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .package-price {
+            font-weight: 600;
+            color: #28a745;
+        }
+        
+        .savings {
+            font-size: 0.85rem;
+            color: #28a745;
+            font-weight: 500;
+        }
+        
+        .package-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .package-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: var(--soft-teal);
+        }
+        
+        .package-card h4 {
+            font-size: 1.5rem;
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+        
+        .package-card .hours {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .package-card .price-list {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .package-card .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .package-card .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .package-card .price-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .package-card .price-value {
+            font-weight: 600;
+            color: #28a745;
+        }
+        
+        .package-card .btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--navy-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .package-card .btn:hover {
+            background: var(--soft-teal);
+            transform: translateY(-2px);
+        }
+        
+        .video-section {
+            background: white;
+            padding: 60px 0;
+        }
+        
+        .video-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: var(--soft-teal);
+        }
+        
+        .video-card h4 {
+            font-size: 1.3rem;
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+        
+        .video-card .price {
+            font-size: 2rem;
+            color: var(--navy-blue);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .video-card .description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-table {
+                overflow-x: auto;
+            }
+            
+            .pricing-table table {
+                min-width: 600px;
+            }
+            
+            .package-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <a href="/" class="logo">
+                    <img src="images/logo.png" alt="Math & Matter Logo">
+                </a>
+                
+                <ul class="nav-menu" role="menu">
+                    <li class="nav-item" role="none">
+                        <a href="/" class="nav-link" role="menuitem">Home</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/services-detail" class="nav-link" role="menuitem">Services</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/about" class="nav-link" role="menuitem">About</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/packages" class="nav-link active" role="menuitem">Packages</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/learning-resources" class="nav-link" role="menuitem">Learning Resources</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/testimonials" class="nav-link" role="menuitem">Testimonials</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/contact" class="nav-link" role="menuitem">Contact</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/booking" class="nav-link btn btn-primary" role="menuitem" style="margin-left: 1rem;">Book Now</a>
+                    </li>
+                </ul>
+                
+                <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Pricing Packages</h1>
+            <p>Flexible tutoring solutions designed to fit your budget and learning goals</p>
+        </div>
+    </section>
+
+    <!-- High School Support Section -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <div class="section-header">
+                <h2>High School Support</h2>
+                <p>Comprehensive tutoring for Grade 8-12 students with flexible pricing options</p>
+            </div>
+            
+            <!-- Pay-As-You-Go Pricing -->
+            <div class="pricing-table">
+                <div class="pricing-table-header">
+                    <h3>Pay-As-You-Go</h3>
+                    <p>Flexible hourly rates - No commitment required</p>
+                </div>
+                <div class="pricing-table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Curriculum</th>
+                                <th>Online / hr</th>
+                                <th>Face-to-Face / hr</th>
+                                <th>Group Online / student</th>
+                                <th>Group Face-to-Face / student</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>CAPS</strong></td>
+                                <td class="payg-price">R150</td>
+                                <td class="payg-price">R250</td>
+                                <td class="payg-price">R110</td>
+                                <td class="payg-price">R120</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IEB</strong></td>
+                                <td class="payg-price">R180</td>
+                                <td class="payg-price">R280</td>
+                                <td class="payg-price">R130</td>
+                                <td class="payg-price">R150</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Package Cards -->
+            <div class="package-cards">
+                <div class="package-card">
+                    <h4>Foundation</h4>
+                    <div class="hours">5 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">CAPS Online</span>
+                            <span class="price-value">R700 <span class="savings">(save R50)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Online</span>
+                            <span class="price-value">R700 <span class="savings">(save R200)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">CAPS Face-to-Face</span>
+                            <span class="price-value">R1,100 <span class="savings">(save R150)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Face-to-Face</span>
+                            <span class="price-value">R1,250 <span class="savings">(save R150)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group CAPS</span>
+                            <span class="price-value">R500 <span class="savings">(save R50)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group IEB</span>
+                            <span class="price-value">R600 <span class="savings">(save R50)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Enroll Now</a>
+                </div>
+                
+                <div class="package-card">
+                    <h4>Progress</h4>
+                    <div class="hours">8 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">CAPS Online</span>
+                            <span class="price-value">R1,120 <span class="savings">(save R80)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Online</span>
+                            <span class="price-value">R1,120 <span class="savings">(save R320)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">CAPS Face-to-Face</span>
+                            <span class="price-value">R1,760 <span class="savings">(save R240)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Face-to-Face</span>
+                            <span class="price-value">R2,000 <span class="savings">(save R240)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group CAPS</span>
+                            <span class="price-value">R800 <span class="savings">(save R80)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group IEB</span>
+                            <span class="price-value">R960 <span class="savings">(save R80)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Enroll Now</a>
+                </div>
+                
+                <div class="package-card">
+                    <h4>Mastery</h4>
+                    <div class="hours">10 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">CAPS Online</span>
+                            <span class="price-value">R1,400 <span class="savings">(save R100)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Online</span>
+                            <span class="price-value">R1,400 <span class="savings">(save R400)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">CAPS Face-to-Face</span>
+                            <span class="price-value">R2,200 <span class="savings">(save R300)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Face-to-Face</span>
+                            <span class="price-value">R2,500 <span class="savings">(save R300)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group CAPS</span>
+                            <span class="price-value">R1,000 <span class="savings">(save R100)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group IEB</span>
+                            <span class="price-value">R1,200 <span class="savings">(save R100)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matric Rewrite Program Section -->
+    <section class="pricing-section" style="background-color: white;">
+        <div class="pricing-container">
+            <div class="section-header">
+                <h2>Matric Rewrite Program</h2>
+                <p>Specialized support for CAPS & IEB Matric Rewrite students with weekly progress tracking</p>
+            </div>
+            
+            <!-- Pay-As-You-Go Pricing -->
+            <div class="pricing-table">
+                <div class="pricing-table-header">
+                    <h3>Pay-As-You-Go</h3>
+                    <p>Flexible hourly rates for focused exam preparation</p>
+                </div>
+                <div class="pricing-table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Curriculum</th>
+                                <th>Online / hr</th>
+                                <th>Face-to-Face / hr</th>
+                                <th>Group Online / student</th>
+                                <th>Group Face-to-Face / student</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>CAPS</strong></td>
+                                <td class="payg-price">R150</td>
+                                <td class="payg-price">R250</td>
+                                <td class="payg-price">R110</td>
+                                <td class="payg-price">R120</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IEB</strong></td>
+                                <td class="payg-price">R180</td>
+                                <td class="payg-price">R280</td>
+                                <td class="payg-price">R130</td>
+                                <td class="payg-price">R150</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Package Cards -->
+            <div class="package-cards">
+                <div class="package-card">
+                    <h4>Rewrite Starter</h4>
+                    <div class="hours">4 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">CAPS Online</span>
+                            <span class="price-value">R560 <span class="savings">(save R40)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Online</span>
+                            <span class="price-value">R560 <span class="savings">(save R160)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">CAPS Face-to-Face</span>
+                            <span class="price-value">R880 <span class="savings">(save R120)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Face-to-Face</span>
+                            <span class="price-value">R1,000 <span class="savings">(save R120)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group CAPS</span>
+                            <span class="price-value">R400 <span class="savings">(save R40)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group IEB</span>
+                            <span class="price-value">R480 <span class="savings">(save R40)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Enroll Now</a>
+                </div>
+                
+                <div class="package-card">
+                    <h4>Rewrite Intensive</h4>
+                    <div class="hours">8 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">CAPS Online</span>
+                            <span class="price-value">R1,120 <span class="savings">(save R80)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Online</span>
+                            <span class="price-value">R1,120 <span class="savings">(save R320)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">CAPS Face-to-Face</span>
+                            <span class="price-value">R1,760 <span class="savings">(save R240)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Face-to-Face</span>
+                            <span class="price-value">R2,000 <span class="savings">(save R240)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group CAPS</span>
+                            <span class="price-value">R800 <span class="savings">(save R80)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group IEB</span>
+                            <span class="price-value">R960 <span class="savings">(save R80)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Enroll Now</a>
+                </div>
+                
+                <div class="package-card">
+                    <h4>Rewrite Excellence</h4>
+                    <div class="hours">12 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">CAPS Online</span>
+                            <span class="price-value">R1,680 <span class="savings">(save R120)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Online</span>
+                            <span class="price-value">R1,680 <span class="savings">(save R480)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">CAPS Face-to-Face</span>
+                            <span class="price-value">R2,640 <span class="savings">(save R360)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">IEB Face-to-Face</span>
+                            <span class="price-value">R3,000 <span class="savings">(save R360)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group CAPS</span>
+                            <span class="price-value">R1,200 <span class="savings">(save R120)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group IEB</span>
+                            <span class="price-value">R1,440 <span class="savings">(save R120)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- University First Year Section -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <div class="section-header">
+                <h2>University - First Year Only</h2>
+                <p>Advanced tutoring support for first-year university students</p>
+            </div>
+            
+            <!-- Pay-As-You-Go Pricing -->
+            <div class="pricing-table">
+                <div class="pricing-table-header">
+                    <h3>Pay-As-You-Go</h3>
+                    <p>Flexible rates for university students - packages optional</p>
+                </div>
+                <div class="pricing-table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Online / hr</th>
+                                <th>Face-to-Face / hr</th>
+                                <th>Group Online / student</th>
+                                <th>Group Face-to-Face / student</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>University 1st Year</strong></td>
+                                <td class="payg-price">R160</td>
+                                <td class="payg-price">R200</td>
+                                <td class="payg-price">R110</td>
+                                <td class="payg-price">R125</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Package Cards -->
+            <div class="package-cards">
+                <div class="package-card">
+                    <h4>Foundation</h4>
+                    <div class="hours">5 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">Online</span>
+                            <span class="price-value">R720 <span class="savings">(save R80)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Face-to-Face</span>
+                            <span class="price-value">R900 <span class="savings">(save R100)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group Online / student</span>
+                            <span class="price-value">R500 <span class="savings">(save R50)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group Face-to-Face / student</span>
+                            <span class="price-value">R560 <span class="savings">(save R65)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Request Tutor</a>
+                </div>
+                
+                <div class="package-card">
+                    <h4>Progress</h4>
+                    <div class="hours">8 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">Online</span>
+                            <span class="price-value">R1,150 <span class="savings">(save R130)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Face-to-Face</span>
+                            <span class="price-value">R1,440 <span class="savings">(save R160)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group Online / student</span>
+                            <span class="price-value">R800 <span class="savings">(save R80)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group Face-to-Face / student</span>
+                            <span class="price-value">R900 <span class="savings">(save R100)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Request Tutor</a>
+                </div>
+                
+                <div class="package-card">
+                    <h4>Mastery</h4>
+                    <div class="hours">10 Hours / Month</div>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-label">Online</span>
+                            <span class="price-value">R1,440 <span class="savings">(save R160)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Face-to-Face</span>
+                            <span class="price-value">R1,800 <span class="savings">(save R200)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group Online / student</span>
+                            <span class="price-value">R1,000 <span class="savings">(save R100)</span></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Group Face-to-Face / student</span>
+                            <span class="price-value">R1,125 <span class="savings">(save R100)</span></span>
+                        </div>
+                    </div>
+                    <a href="/booking" class="btn">Request Tutor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Recordings Section -->
+    <section class="video-section">
+        <div class="pricing-container">
+            <div class="section-header">
+                <h2>Video Recordings</h2>
+                <p>Pre-recorded tutoring sessions with lifetime access</p>
+            </div>
+            
+            <div class="video-cards">
+                <div class="video-card">
+                    <h4>High School</h4>
+                    <div class="price">R80</div>
+                    <div class="description">Per video with lifetime access</div>
+                    <a href="/contact" class="btn">Purchase / Request</a>
+                </div>
+                
+                <div class="video-card">
+                    <h4>University 1st Year</h4>
+                    <div class="price">R80</div>
+                    <div class="description">Per video with lifetime access</div>
+                    <a href="/contact" class="btn">Purchase / Request</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/logo.png" alt="Math & Matter Logo" class="footer-logo">
+                    <p>Transforming academic challenges into confident achievements through personalized tutoring.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/services-detail">Services</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/packages">Packages</a></li>
+                        <li><a href="/learning-resources">Learning Resources</a></li>
+                        <li><a href="/testimonials">Testimonials</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@mathandmatter.co.za">info@mathandmatter.co.za</a></p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/27681239084" target="_blank">+27 68 123 9084</a></p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61572036794630" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i> Math &amp; Matter Tutoring</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Business Hours</h3>
+                    <p><i class="fas fa-clock"></i> 8:00 AM - 8:00 PM (Monday - Sunday)</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Math & Matter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

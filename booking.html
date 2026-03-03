@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session | Math & Matter</title>
+    <meta name="description" content="Book a tutoring session with Math & Matter. Choose your preferred service, date, time, and location.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/booking.css">
+</head>
+<body class="booking-page">
+    <!-- Header & Navigation -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <a href="/" class="logo">
+                    <img src="images/logo.png" alt="Math & Matter Logo">
+                </a>
+                
+                <ul class="nav-menu" role="menu">
+                    <li class="nav-item" role="none">
+                        <a href="/" class="nav-link" role="menuitem">Home</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/services-detail" class="nav-link" role="menuitem">Services</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/about" class="nav-link" role="menuitem">About</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/packages" class="nav-link" role="menuitem">Packages</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/learning-resources" class="nav-link" role="menuitem">Learning Resources</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/testimonials" class="nav-link" role="menuitem">Testimonials</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/contact" class="nav-link" role="menuitem">Contact</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/booking" class="nav-link btn btn-primary active" role="menuitem">Book Now</a>
+                    </li>
+                </ul>
+                
+                <div class="hamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Booking Hero Section -->
+    <section class="hero booking-hero" id="booking-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Book Your Tutoring Session</h1>
+                <p>Schedule a personalized tutoring session with our expert tutors. Choose your preferred service, date, time, and location.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="section booking-section" id="booking-form-section">
+        <div class="container">
+            <h2 class="section-title">Schedule Your Session</h2>
+            
+            <div class="booking-container">
+                <div id="message-container"></div>
+                
+                <form id="booking-form" class="booking-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="8f0c6095-e110-44b1-a7a2-9fc7fb021af8">
+                    <input type="hidden" name="subject" value="New Booking - Math & Matter">
+                    <input type="hidden" name="from_name" value="Math & Matter Website">
+                    <input type="hidden" name="redirect" value="https://mathandmatter.co.za/booking.html?success=true">
+                    
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physical Science">Physical Science</option>
+                            <option value="Life Science">Life Science</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Economics">Economics (EMS)</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Natural Science">Natural Science</option>
+                            <option value="CHEM 1012">CHEM 1012</option>
+                            <option value="CHEM 1013">CHEM 1013</option>
+                            <option value="CHEM 1051">CHEM 1051</option>
+                            <option value="CHEM 1048">CHEM 1048</option>
+                            <option value="CHEM 1049">CHEM 1049</option>
+                            <option value="CHE 1501">CHE 1501</option>
+                            <option value="CHE 1502">CHE 1502</option>
+                            <option value="MAT 1501">MAT 1501</option>
+                            <option value="MAT 1503">MAT 1503</option>
+                            <option value="MAT 1512">MAT 1512</option>
+                            <option value="MAT 1613">MAT 1613</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="booking-date">Select Date</label>
+                        <input type="date" id="booking-date" name="bookingDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Time Slot</label>
+                        <div id="time-slots" class="time-slots-container">
+                            <p>Please select a date first</p>
+                        </div>
+                        <input type="hidden" id="start-time" name="startTime">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Location Type</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="online" name="locationType" value="online" checked>
+                                <label for="online">Online</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="inPersonNearby" name="locationType" value="inPersonNearby">
+                                <label for="inPersonNearby">In-Person (Nearby)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="inPersonTravel" name="locationType" value="inPersonTravel">
+                                <label for="inPersonTravel">In-Person (Travel)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="location-field" style="display: none;">
+                        <label for="location">Location Address</label>
+                        <input type="text" id="location" name="location" placeholder="Enter the address for in-person tutoring">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="session-type">Session Type</label>
+                        <select id="session-type" name="sessionType" required>
+                            <option value="individual">Individual (One-on-One)</option>
+                            <option value="group">Group Session</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="group-size-field" style="display: none;">
+                        <label for="group-size">Number of Students (minimum 3)</label>
+                        <input type="number" id="group-size" name="groupSize" min="3" max="5" placeholder="e.g., 3">
+                        <small style="color: #666; font-size: 14px;">Group sessions require 3-5 students</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="package-type">Package Type</label>
+                        <select id="package-type" name="packageType">
+                            <option value="single">Single Session</option>
+                            <option value="5-hour">5-Hour Package (5% discount)</option>
+                            <option value="8-hour">8-Hour Package (8% discount)</option>
+                            <option value="10-hour">10-Hour Package (10% discount)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group price-container">
+                        <label>Price</label>
+                        <div id="price-display" class="price-display">
+                            Select a service to see price
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="student-name">Student Name</label>
+                        <input type="text" id="student-name" name="studentName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="student-email">Email</label>
+                        <input type="email" id="student-email" name="studentEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="student-phone">Phone Number</label>
+                        <input type="tel" id="student-phone" name="studentPhone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="student-grade">Grade/Level</label>
+                        <select id="student-grade" name="studentGrade">
+                            <option value="Grade 8">Grade 8</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+                            <option value="University 1st Year">University 1st Year</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Any specific topics or requirements"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Book Session</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="Math & Matter Logo">
+                    </div>
+                    <p>Where your learning matters. Personalized tutoring services in Mathematics, Physical Sciences, and Life Sciences.</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+27 68 123 9084</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+27 68 123 9084</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@mathandmatter.co.za</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Math & Matter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        // SUCCESS MESSAGE WITH FORM HIDING - Check URL on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                var container = document.getElementById('message-container');
+                var form = document.getElementById('booking-form');
+                var section = document.getElementById('booking-form-section');
+                
+                if (container && form && section) {
+                    // Hide the entire form
+                    form.style.display = 'none';
+                    
+                    // Create success message with modern styling
+                    var successDiv = document.createElement('div');
+                    successDiv.className = 'success-message';
+                    successDiv.innerHTML = `
+                        <div class="success-content">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>Thank you for your booking request</h3>
+                            <p>We have received your message successfully. A member of the Math & Matter team will contact you within 24 hours.</p>
+                        </div>
+                    `;
+                    
+                    // Add fade-in animation
+                    successDiv.style.opacity = '0';
+                    successDiv.style.transform = 'translateY(20px)';
+                    successDiv.style.transition = 'all 0.6s ease';
+                    
+                    container.innerHTML = '';
+                    container.appendChild(successDiv);
+                    
+                    // Trigger fade-in animation
+                    setTimeout(function() {
+                        successDiv.style.opacity = '1';
+                        successDiv.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    container.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+        
+        // Simple time slot selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('booking-date');
+            const serviceSelect = document.getElementById('service');
+            const timeSlotsContainer = document.getElementById('time-slots');
+            const startTimeInput = document.getElementById('start-time');
+            
+            // Set min date to today
+            const today = new Date().toISOString().split('T')[0];
+            if (dateInput) dateInput.min = today;
+            
+            // Generate time slots when date and service are selected
+            function generateTimeSlots() {
+                if (!dateInput.value || !serviceSelect.value) {
+                    timeSlotsContainer.innerHTML = '<p style="color: #666;">Please select a service and date first</p>';
+                    return;
+                }
+                
+                timeSlotsContainer.innerHTML = '';
+                const times = ['9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM'];
+                
+                times.forEach(time => {
+                    const slot = document.createElement('div');
+                    slot.className = 'time-slot';
+                    slot.textContent = time;
+                    slot.style.cursor = 'pointer';
+                    slot.onclick = function() {
+                        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                        this.classList.add('selected');
+                        startTimeInput.value = time;
+                    };
+                    timeSlotsContainer.appendChild(slot);
+                });
+            }
+            
+            if (dateInput) dateInput.addEventListener('change', generateTimeSlots);
+            if (serviceSelect) serviceSelect.addEventListener('change', generateTimeSlots);
+            
+            // Show/hide location field
+            document.querySelectorAll('input[name="locationType"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const locationField = document.getElementById('location-field');
+                    locationField.style.display = this.value === 'online' ? 'none' : 'block';
+                });
+            });
+            
+            // Show/hide group size field
+            const sessionTypeSelect = document.getElementById('session-type');
+            if (sessionTypeSelect) {
+                sessionTypeSelect.addEventListener('change', function() {
+                    const groupSizeField = document.getElementById('group-size-field');
+                    const groupSizeInput = document.getElementById('group-size');
+                    if (this.value === 'group') {
+                        groupSizeField.style.display = 'block';
+                        groupSizeInput.required = true;
+                    } else {
+                        groupSizeField.style.display = 'none';
+                        groupSizeInput.required = false;
+                        groupSizeInput.value = '';
+                    }
+                    updatePrice();
+                });
+            }
+            
+            // Update price display
+            function updatePrice() {
+                const priceDisplay = document.getElementById('price-display');
+                if (!serviceSelect.value) {
+                    priceDisplay.textContent = 'Select a service to see price';
+                    return;
+                }
+                
+                const locationType = document.querySelector('input[name="locationType"]:checked')?.value || 'online';
+                const sessionType = document.getElementById('session-type').value;
+                const groupSize = parseInt(document.getElementById('group-size').value) || 1;
+                const packageType = document.getElementById('package-type').value;
+                
+                // Check if it's a university module
+                const isUniversityModule = serviceSelect.value.match(/^(CHEM|CHE|MAT)\s*\d+/);
+                
+                // GROUP SESSION PRICING
+                if (sessionType === 'group' && groupSize >= 3) {
+                    // Group session rates per student per hour
+                    let pricePerStudentPerHour;
+                    
+                    if (isUniversityModule) {
+                        // University group pricing: R110 online, R125 in-person
+                        pricePerStudentPerHour = (locationType === 'online') ? 110 : 125;
+                    } else {
+                        // High school group pricing: R110 online, R120 in-person
+                        pricePerStudentPerHour = (locationType === 'online') ? 110 : 120;
+                    }
+                    
+                    if (packageType === 'single') {
+                        // Single session (1 hour)
+                        const pricePerStudent = pricePerStudentPerHour;
+                        const totalForGroup = pricePerStudent * groupSize;
+                        priceDisplay.innerHTML = `<strong>R${pricePerStudent} per student</strong><br>Total for ${groupSize} students: R${totalForGroup}`;
+                    } else {
+                        // Package deals
+                        const hours = parseInt(packageType.split('-')[0]);
+                        const pricePerStudent = pricePerStudentPerHour * hours;
+                        const totalForGroup = pricePerStudent * groupSize;
+                        priceDisplay.innerHTML = `R${pricePerStudentPerHour}/hour × ${hours} hours<br><strong>R${pricePerStudent} per student</strong><br>Total for ${groupSize} students: R${totalForGroup}`;
+                    }
+                } 
+                // INDIVIDUAL SESSION PRICING
+                else {
+                    let price;
+                    
+                    if (isUniversityModule) {
+                        // University individual pricing: R160 online, R200 in-person
+                        price = (locationType === 'inPersonTravel') ? 200 : 160;
+                    } else {
+                        // High school individual pricing: R150 online, R250 in-person
+                        price = (locationType === 'inPersonTravel') ? 250 : 150;
+                    }
+                    
+                    if (packageType === 'single') {
+                        priceDisplay.textContent = `R${price} per session`;
+                    } else {
+                        const hours = parseInt(packageType.split('-')[0]);
+                        const discount = hours === 5 ? 0.05 : hours === 8 ? 0.08 : 0.10;
+                        const discountedPrice = price * (1 - discount);
+                        const total = discountedPrice * hours;
+                        priceDisplay.innerHTML = `R${discountedPrice.toFixed(0)}/hour × ${hours} hours<br><strong>Total: R${total.toFixed(0)}</strong>`;
+                    }
+                }
+            }
+            
+            serviceSelect.addEventListener('change', updatePrice);
+            document.getElementById('package-type').addEventListener('change', updatePrice);
+            document.querySelectorAll('input[name="locationType"]').forEach(r => r.addEventListener('change', updatePrice));
+            document.getElementById('group-size').addEventListener('input', updatePrice);
+            
+            // Time slots functionality
+            const blockedSlots = {
+                "2026-03-05": ["10:00 AM", "12:30 PM"],
+                "2026-03-06": ["3:00 PM"]
+            };
+            
+            function generateTimeSlots() {
+                const slots = [];
+                const times = ['9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM'];
+                return times;
+            }
+            
+            function populateTimeSlots(selectedDate) {
+                const timeSlotsContainer = document.getElementById('time-slots');
+                const startTimeInput = document.getElementById('start-time');
+                
+                if (!selectedDate) {
+                    timeSlotsContainer.innerHTML = '<p>Please select a date first</p>';
+                    startTimeInput.value = '';
+                    return;
+                }
+                
+                const allSlots = generateTimeSlots();
+                const blockedForDate = blockedSlots[selectedDate] || [];
+                const availableSlots = allSlots.filter(slot => !blockedForDate.includes(slot));
+                
+                if (availableSlots.length === 0) {
+                    timeSlotsContainer.innerHTML = '<p>No available times</p>';
+                    startTimeInput.value = '';
+                    return;
+                }
+                
+                let slotsHTML = '<div class="time-slots-grid">';
+                availableSlots.forEach(slot => {
+                    slotsHTML += `
+                        <div class="time-slot" data-time="${slot}">
+                            <input type="radio" id="time-${slot.replace(/\s+/g, '-')}" name="selectedTime" value="${slot}">
+                            <label for="time-${slot.replace(/\s+/g, '-')}">${slot}</label>
+                        </div>
+                    `;
+                });
+                slotsHTML += '</div>';
+                
+                timeSlotsContainer.innerHTML = slotsHTML;
+                
+                // Add event listeners to time slots
+                document.querySelectorAll('.time-slot input').forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.checked) {
+                            startTimeInput.value = this.value;
+                        }
+                    });
+                });
+            }
+            
+            // Date change event listener
+            document.getElementById('booking-date').addEventListener('change', function() {
+                populateTimeSlots(this.value);
+            });
+            
+            // Add CSS for horizontal time slots grid
+            const style = document.createElement('style');
+            style.textContent = `
+                .time-slots-grid {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-top: 10px;
+                    justify-content: flex-start;
+                }
+                
+                .time-slot {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 0 0 auto;
+                }
+                
+                .time-slot input[type="radio"] {
+                    display: none;
+                }
+                
+                .time-slot label {
+                    display: inline-block;
+                    padding: 10px 16px;
+                    background: #f8f9fa;
+                    border: 2px solid #dee2e6;
+                    border-radius: 8px;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin: 0;
+                    min-width: 80px;
+                    white-space: nowrap;
+                }
+                
+                .time-slot input[type="radio"]:checked + label {
+                    background: #007BFF;
+                    color: white;
+                    border-color: #007BFF;
+                    transform: translateY(-1px);
+                    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+                }
+                
+                .time-slot label:hover {
+                    border-color: #007BFF;
+                    background: #e7f3ff;
+                    transform: translateY(-1px);
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+                
+                .time-slot input[type="radio"]:checked + label:hover {
+                    background: #0056b3;
+                    transform: translateY(-1px);
+                }
+            `;
+            document.head.appendChild(style);
+        })();
+    </script>
+    
+    <style>
+        .success-message {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+        
+        .success-content {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(40, 167, 69, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .success-icon {
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .success-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .success-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .success-content {
+                margin: 0 20px;
+                padding: 30px 20px;
+            }
+            
+            .success-icon {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+            
+            .success-content h3 {
+                font-size: 20px;
+            }
+            
+            .success-content p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</body>
+</html>
+
