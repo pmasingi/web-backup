@@ -328,22 +328,36 @@ function validateBookingForm() {
  * Show message to user
  */
 function showMessage(message, type = 'info') {
-  const messageContainer = document.getElementById('message-container');
+  // Ensure we have a container
+  let messageContainer = document.getElementById('message-container');
   if (!messageContainer) {
-    // Create message container if it doesn't exist
-    const container = document.createElement('div');
-    container.id = 'message-container';
-    document.body.appendChild(container);
+    messageContainer = document.createElement('div');
+    messageContainer.id = 'message-container';
+    document.body.appendChild(messageContainer);
   }
-  
+
+  // Create the toast
   const messageElement = document.createElement('div');
   messageElement.className = `message ${type}`;
   messageElement.textContent = message;
-  
+
+  // Add to DOM
   messageContainer.appendChild(messageElement);
-  
-  // Auto-remove after 5 seconds
+
+  // Auto-remove after 5 seconds (with fade)
+  const DISPLAY_MS = 5000;
+  const FADE_MS = 300;
+
   setTimeout(() => {
-    messageElement.remove();
-  }, 5000);
+    // Fade out first
+    messageElement.style.transition = `opacity ${FADE_MS}ms ease`;
+    messageElement.style.opacity = '0';
+
+    // Then remove from DOM
+    setTimeout(() => {
+      if (messageElement && messageElement.parentNode) {
+        messageElement.parentNode.removeChild(messageElement);
+      }
+    }, FADE_MS);
+  }, DISPLAY_MS);
 }

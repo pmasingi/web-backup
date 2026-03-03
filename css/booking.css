@@ -221,6 +221,18 @@
   border-left: 4px solid #17a2b8;
 }
 
+.message {
+  opacity: 1;
+}
+
+#message-container {
+  pointer-events: none; /* container won't block clicks */
+}
+
+.message {
+  pointer-events: auto; /* message itself can still be clickable if needed */
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .booking-container {
