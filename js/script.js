@@ -1,27 +1,42 @@
 // Math & Matter Website JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation Toggle
+    // Mobile Navigation Toggle (Robust)
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            
-            // Update ARIA attributes
-            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', !isExpanded);
+
+    if (!hamburger || !navMenu) {
+      console.warn('[nav] Missing .hamburger or .nav-menu in the HTML on this page.');
+    } else {
+      const toggleMenu = () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+
+        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', String(!isExpanded));
+
+        console.log('[nav] toggled', {
+          hamburgerActive: hamburger.classList.contains('active'),
+          navMenuActive: navMenu.classList.contains('active')
         });
-        
-        // Also handle keyboard interaction for accessibility
-        hamburger.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                hamburger.click();
-            }
-        });
+      };
+
+      // Click for desktop + mobile
+      hamburger.addEventListener('click', toggleMenu);
+
+      // Touchstart helps on some mobile browsers when overlays exist
+      hamburger.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // prevent "ghost click" issues
+        toggleMenu();
+      }, { passive: false });
+
+      // Keyboard accessibility (already similar in your file)
+      hamburger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
     }
     
     // Close mobile menu when clicking a nav link
