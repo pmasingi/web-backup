@@ -389,7 +389,7 @@ img {
   cursor: pointer;
   padding: 0.5rem;
   position: relative;
-  z-index: 2000;
+  z-index: 9999;
 }
 
 .hamburger span {
@@ -3895,4 +3895,21 @@ input[type="radio"] {
     padding: 12px 24px;
     font-size: 0.9375rem;
   }
+}
+
+/* Force hamburger to be clickable on mobile */
+.hamburger {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure header/nav doesn’t block taps */
+.header,
+.navbar {
+  z-index: 1500;
+}
+
+/* Mobile menu should be under hamburger */
+.nav-menu {
+  z-index: 2000;
 }
